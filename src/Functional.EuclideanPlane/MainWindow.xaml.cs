@@ -38,7 +38,6 @@ public partial class MainWindow
     private readonly Dictionary<string, DispatcherTimer> _timers = new();
     private string _previousTimer = string.Empty;
 
-
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
         var translateTimer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 1, 0) };
