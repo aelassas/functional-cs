@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Functional.Core.WPF\Functional.Core.WPF.csproj" />
+    <ProjectReference Include="..\Functional.Core\Functional.Core.csproj" />
+  </ItemGroup>
+
+</Project>

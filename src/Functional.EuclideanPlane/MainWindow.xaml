@@ -1,0 +1,23 @@
+﻿<Window x:Class="Functional.EuclideanPlane.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="MainWindow" Height="600" Width="544"
+        Loaded="Window_Loaded">
+    <Grid Width="522">
+        <Image Height="500" Width="500" HorizontalAlignment="Left" Name="PlaneCanvas" Stretch="Fill" VerticalAlignment="Top"
+           Margin="12,49,0,0" />
+        <ComboBox Height="23" Width="170" HorizontalAlignment="Left" Margin="12,12,0,0" Name="ComboBox"
+              VerticalAlignment="Top">
+            <ComboBoxItem Name="Disk" Selected="Disk_Selected">Disk</ComboBoxItem>
+            <ComboBoxItem Name="HorizentalHalfPlane" Selected="HorizentalHalfPlane_Selected">
+                Horizental Half-Plane
+            </ComboBoxItem>
+            <ComboBoxItem Name="VerticalHalfPlane" Selected="VerticalHalfPlane_Selected">Vertical Half-Plane</ComboBoxItem>
+            <ComboBoxItem Name="HalfDisk" Selected="HalfDisk_Selected">Half-Disk</ComboBoxItem>
+            <ComboBoxItem Name="TranslateAnimation" Selected="TranslateAnimation_Selected">Translate animation</ComboBoxItem>
+            <ComboBoxItem Name="ScaleAnimation" Selected="ScaleAnimation_Selected">Homothety animation</ComboBoxItem>
+            <ComboBoxItem Name="RotateAnimation" Selected="RotateAnimation_Selected">Rotation animation</ComboBoxItem>
+            <ComboBoxItem Name="NewtonFractal" Selected="NewtonFractal_Selected">Newton Fractal</ComboBoxItem>
+            <ComboBoxItem Name="MandelbrotFractal" Selected="MandelbrotFractal_Selected">Mandelbrot Fractal</ComboBoxItem>
+        </ComboBox>
+    </Grid>
+</Window>
