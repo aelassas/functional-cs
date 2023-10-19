@@ -9,7 +9,7 @@ public class MyLazy<T>
 
     private readonly Func<T> _f;
     private bool _hasValue;
-    private T _value;
+    private Nullable<T> _value;
 
     #endregion
 
