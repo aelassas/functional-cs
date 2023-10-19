@@ -9,7 +9,6 @@ public static class ConsoleHelper
 
     public static void Shell()
     {
-
         Console.WriteLine("\nRepresenting data through functions");
 
         // Empty set
@@ -46,7 +45,6 @@ public static class ConsoleHelper
         Predicate<int> prime = Set.IsPrime;
         int p = Set.Primes(prime).Skip(10000).First();
         Console.WriteLine("The 10 001st prime number is {0}", p);
-
 
         // Union
         Console.WriteLine("\nUnion:");
