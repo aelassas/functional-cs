@@ -9,9 +9,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Functional.Core.WPF", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Functional.Set", "src\Functional.Set\Functional.Set.csproj", "{0667A427-0B21-4AA7-A69B-27750CD5E2B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functional.Core", "src\Functional.Core\Functional.Core.csproj", "{2B79DFC1-AA7E-4BF4-8945-F449B47E7FD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Functional.Core", "src\Functional.Core\Functional.Core.csproj", "{2B79DFC1-AA7E-4BF4-8945-F449B47E7FD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functional.Laziness", "src\Functional.Laziness\Functional.Laziness.csproj", "{ABAEB197-AE46-4849-A8C8-BEC3E9BF72F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Functional.Laziness", "src\Functional.Laziness\Functional.Laziness.csproj", "{ABAEB197-AE46-4849-A8C8-BEC3E9BF72F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{F7BF0E05-70B7-4AEF-8207-0C7128E6CC08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{6A3D6C51-AECA-47EA-B638-C3221E9B1C71}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +49,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6A3D6C51-AECA-47EA-B638-C3221E9B1C71} = {F7BF0E05-70B7-4AEF-8207-0C7128E6CC08}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B711D8E-F5D4-4B1F-9952-BBA2574B82E8}

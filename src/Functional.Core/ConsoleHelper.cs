@@ -27,19 +27,19 @@ public static class ConsoleHelper
 
         // Other sets
         Console.WriteLine("\nOther sets:");
-        Predicate<int> even = i => i%2 == 0;
+        Predicate<int> even = i => i % 2 == 0;
         Console.WriteLine("Is {0} even? {1}", 99, even(99));
         Console.WriteLine("Is {0} even? {1}", 998, even(998));
 
-        Predicate<int> odd = i => i%2 == 1;
+        Predicate<int> odd = i => i % 2 == 1;
         Console.WriteLine("Is {0} odd? {1}", 99, odd(99));
         Console.WriteLine("Is {0} odd? {1}", 998, odd(998));
 
-        Predicate<int> multipleOfThree = i => i%3 == 0;
+        Predicate<int> multipleOfThree = i => i % 3 == 0;
         Console.WriteLine("Is {0} a multiple of 3? {1}", 99, multipleOfThree(99));
         Console.WriteLine("Is {0} a multiple of 3? {1}", 998, multipleOfThree(998));
 
-        Predicate<int> multipleOfFive = i => i%5 == 0;
+        Predicate<int> multipleOfFive = i => i % 5 == 0;
         Console.WriteLine("Is {0} a multiple of 5? {1}", 15, multipleOfFive(15));
         Console.WriteLine("Is {0} a multiple of 5? {1}", 998, multipleOfFive(998));
 

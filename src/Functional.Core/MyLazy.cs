@@ -9,7 +9,7 @@ public class MyLazy<T>
 
     private readonly Func<T> _f;
     private bool _hasValue;
-    private Nullable<T> _value;
+    private T? _value;
 
     #endregion
 
@@ -28,7 +28,7 @@ public class MyLazy<T>
     // Use objects of type MyLazy<T> as objects of type T 
     // through implicit keyword
     //
-    public static implicit operator T(MyLazy<T> lazy)
+    public static implicit operator T?(MyLazy<T?> lazy)
     {
         if (!lazy._hasValue)
         {
