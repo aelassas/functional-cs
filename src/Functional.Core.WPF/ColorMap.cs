@@ -1,5 +1,5 @@
-﻿using System;
-using Meta.Numerics;
+﻿using Meta.Numerics;
+using System;
 
 namespace Functional.Core.WPF;
 // functions for mapping between color values

@@ -1,9 +1,9 @@
 ﻿// @Author: Akram El Assas
 // @License: CPOL
 
+using Meta.Numerics;
 using System;
 using System.Windows;
-using Meta.Numerics;
 
 namespace Functional.Core.WPF;
 

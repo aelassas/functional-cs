@@ -1,12 +1,12 @@
 ﻿// @Author: Akram El Assas
 // @License: CPOL
 
+using Functional.Core;
+using Functional.Core.WPF;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Threading;
-using Functional.Core;
-using Functional.Core.WPF;
 
 namespace Functional.EuclideanPlane;
 

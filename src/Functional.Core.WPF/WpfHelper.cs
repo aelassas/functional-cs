@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Meta.Numerics;
+using System;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
-using Meta.Numerics;
 using Image = System.Windows.Controls.Image;
 using Point = System.Windows.Point;
 
