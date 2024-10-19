@@ -41,27 +41,37 @@ Let `S` be any set of elements `a`, `b`, `c` ... (for instance, the books on the
 
 The _[Characteristic Function](http://en.wikipedia.org/wiki/Indicator_function)_ `S'(x)` of the set `S'` is a function which associates either `true` or `false` with each element `x` of `S`.
 
-<pre lang="text">S'(x) = true if x is in S'
-S'(x) = false if x is not in S'</pre>
+```
+S'(x) = true if x is in S'
+S'(x) = false if x is not in S'
+```
 
 Let `S` be the set of books on the table and let `S'` be the set of green books on the table. Let `a` and `b` be two green books, and let `c` and `d` be two red books on the table. Then:
 
-<pre lang="text">S'(a) = S'(b) = true
-S'(c) = S'(d) = false</pre>
+```
+S'(a) = S'(b) = true
+S'(c) = S'(d) = false
+```
 
 Let `S` be the set of the videos in YouTube and let `S'` be the set of cultural videos in YouTube. Let `a` and `b` be two cultural videos in YouTube, and `c` and `d` be two non-cultural videos in YouTube. Then:
 
-<pre lang="text">S'(a) = S'(b) = true
-S'(c) = S'(d) = false</pre>
+```
+S'(a) = S'(b) = true
+S'(c) = S'(d) = false
+```
 
 Let `S` be the set of the points in the Euclidean plane and let `S'` be the set of the points in the circle of radius 1 centered at the origin of the Euclidean plane (0, 0) _(unit circle)_. Let `a` and `b` be two points in the unit circle, and let `c` and `d` be two points in a circle of radius 2 centered at the origin of the Euclidean plane. Then:
 
-<pre lang="text">S'(a) = S'(b) = true
-S'(c) = S'(d) = false</pre>
+```
+S'(a) = S'(b) = true
+S'(c) = S'(d) = false
+```
 
 Thus, any set `S'` can always be represented by its _Characteristic Function_. A function that takes as argument an element and returns `true` if this element is in `S'`, `false` otherwise. In other words, a set (abstract data type) can be represented through a `Predicate` in C#.
 
-<pre lang="cs">Predicate<T> set;</pre>
+```csharp
+Predicate<T> set;
+```
 
 In the next sections, we will see how to represent some fundamental sets in the algebra of sets through C# in a functional way, then we will define generic binary operations on sets. We will then apply these operations on numbers then on subsets of the Euclidean Plane. Sets are abstract data structures, the subsets of numbers and the subsets of the Euclidean plane are the representation of abstract data-structures, and finally the binary operations are the generic logics that works on any representation of the abstract data structures.
 
@@ -75,12 +85,16 @@ This section introduces the representation of some fundamental sets in the algeb
 
 Let `E` be the empty set and `Empty` its _Characteristic function_. In algebra of sets, `E` is the unique set having no elements. Therefore, `Empty` can be defined as follows:
 
-<pre lang="text">Empty(x) = false if x is in E
-Empty(x) = false if x is not in E</pre>
+```
+Empty(x) = false if x is in E
+Empty(x) = false if x is not in E
+```
 
 Thus, the representation of `E` in C# can be defined as follows:
 
-<pre lang="cs">public static Predicate<T> Empty<T>() => _ => false;</pre>
+```csharp
+public static Predicate<T> Empty<T>() => _ => false;
+```
 
 In algebra of sets, `Empty` is represented as follows:
 
@@ -88,8 +102,10 @@ In algebra of sets, `Empty` is represented as follows:
 
 Thus, running the code below:
 
-<pre lang="cs">Console.WriteLine("\nEmpty set:");
-Console.WriteLine("Is 7 in {{}}? {0}", Empty<int>()(7));</pre>
+```csharp
+Console.WriteLine("\nEmpty set:");
+Console.WriteLine("Is 7 in {{}}? {0}", Empty<int>()(7));
+```
 
 gives the following results:
 
@@ -101,11 +117,15 @@ gives the following results:
 
 Let `S` be a set and `S'` be the subset of `S` that contains all the elements and `All` its _Characteristic function_. In algebra of sets, `S'` is the full set that contains all the elements. Therefore, `All` can be defined like this:
 
-<pre lang="text">All(x) = true if x is in S</pre>
+```
+All(x) = true if x is in S
+```
 
 Thus, the representation of `S'` in C# can be defined as follows:
 
-<pre lang="cs">public static Predicate<T> All<T>() => _ => true;</pre>
+```csharp
+public static Predicate<T> All<T>() => _ => true;
+```
 
 In algebra of sets, `All` is represented as follows:
 
@@ -113,7 +133,9 @@ In algebra of sets, `All` is represented as follows:
 
 Thus, running the code below:
 
-<pre lang="cs">Console.WriteLine("Is 7 in the integers set? {0}", All<int>()(7));</pre>
+```csharp
+Console.WriteLine("Is 7 in the integers set? {0}", All<int>()(7));
+```
 
 gives the following results:
 
@@ -123,17 +145,23 @@ gives the following results:
 
 Let `E` be the Singleton set and `Singleton` its _Characteristic function_. In algebra of sets, `E` also known as unit set, or 1-tuple is a set with exactly one element `e`. Therefore, `Singleton` can be defined as follows:
 
-<pre lang="text">Singleton(x) = true if x is e
-Singleton(x) = false if x is not e</pre>
+```
+Singleton(x) = true if x is e
+Singleton(x) = false if x is not e
+```
 
 Thus, the representation of `E` in C# can be defined as follows:
 
-<pre lang="cs">public static Predicate<T> Singleton<T>(T e) where T : notnull => x => e.Equals(x);</pre>
+```csharp
+public static Predicate<T> Singleton<T>(T e) where T : notnull => x => e.Equals(x);
+```
 
 Thus, running the code below:
 
-<pre lang="cs">Console.WriteLine("Is 7 in the singleton {{0}}? {0}", Singleton(0)(7));
-Console.WriteLine("Is 7 in the singleton {{7}}? {0}", Singleton(7)(7));</pre>
+```csharp
+Console.WriteLine("Is 7 in the singleton {{0}}? {0}", Singleton(0)(7));
+Console.WriteLine("Is 7 in the singleton {{7}}? {0}", Singleton(7)(7));
+```
 
 gives the following results:
 
@@ -147,17 +175,23 @@ This section presents subsets of the integers set.
 
 Let `E` be the set of even numbers and `Even` its _Characteristic function_. In mathematics, an even number is a number which is a multiple of two. Therefore, `Even` can be defined as follows:
 
-<pre lang="text">Even(x) = true if x is a multiple of 2
-Even(x) = false if x is not a multiple of 2</pre>
+```
+Even(x) = true if x is a multiple of 2
+Even(x) = false if x is not a multiple of 2
+```
 
 Thus, the representation of `E` in C# can be defined as follows:
 
-<pre lang="cs">Predicate<int> even = i => i % 2 == 0;</pre>
+```csharp
+Predicate<int> even = i => i % 2 == 0;
+```
 
 Thus, running the code below:
 
-<pre lang="cs">Console.WriteLine("Is {0} even? {1}", 99, even(99));
-Console.WriteLine("Is {0} even? {1}", 998, even(998));</pre>
+```csharp
+Console.WriteLine("Is {0} even? {1}", 99, even(99));
+Console.WriteLine("Is {0} even? {1}", 998, even(998));
+```
 
 gives the following results:
 
@@ -167,17 +201,23 @@ gives the following results:
 
 Let `E` be the set of odd numbers and `Odd` its _Characteristic function_. In mathematics, an odd number is a number which is not a multiple of two. Therefore, `Odd` can be defined as follows:
 
-<pre lang="text">Odd(x) = true if x is not a multiple of 2
-Odd(x) = false if x is a multiple of 2</pre>
+```
+Odd(x) = true if x is not a multiple of 2
+Odd(x) = false if x is a multiple of 2
+```
 
 Thus, the representation of `E` in C# can be defined as follows:
 
-<pre lang="cs">Predicate<int> odd = i => i % 2 == 1;</pre>
+```csharp
+Predicate<int> odd = i => i % 2 == 1;
+```
 
 Thus, running the code below:
 
-<pre lang="cs">Console.WriteLine("Is {0} odd? {1}", 99, odd(99));
-Console.WriteLine("Is {0} odd? {1}", 998, odd(998));</pre>
+```csharp
+Console.WriteLine("Is {0} odd? {1}", 99, odd(99));
+Console.WriteLine("Is {0} odd? {1}", 998, odd(998));
+```
 
 gives the following results:
 
@@ -187,17 +227,23 @@ gives the following results:
 
 Let `E` be the set of multiples of 3 and `MultipleOfThree` its _Characteristic function_. In mathematics, a multiple of 3 is a number divisible by 3\. Therefore, `MultipleOfThree` can be defined as follows:
 
-<pre lang="text">MultipleOfThree(x) = true if x is divisible by 3
-MultipleOfThree(x) = false if x is not divisible by 3</pre>
+```
+MultipleOfThree(x) = true if x is divisible by 3
+MultipleOfThree(x) = false if x is not divisible by 3
+```
 
 Thus, the representation of `E` in C# can be defined as follows:
 
-<pre lang="cs">Predicate<int> multipleOfThree = i => i % 3 == 0;</pre>
+```csharp
+Predicate<int> multipleOfThree = i => i % 3 == 0;
+```
 
 Thus, running the code below:
 
-<pre lang="cs">Console.WriteLine("Is {0} a multiple of 3? {1}", 99, multipleOfThree(99));
-Console.WriteLine("Is {0} a multiple of 3? {1}", 998, multipleOfThree(998));</pre>
+```csharp
+Console.WriteLine("Is {0} a multiple of 3? {1}", 99, multipleOfThree(99));
+Console.WriteLine("Is {0} a multiple of 3? {1}", 998, multipleOfThree(998));
+```
 
 gives the following results:
 
@@ -207,17 +253,23 @@ gives the following results:
 
 Let `E` be the set of multiples of 5 and `MultipleOfFive` its _Characteristic function_. In mathematics, a multiple of 5 is a number divisible by 5\. Therefore, `MultipleOfFive` can be defined as follows:
 
-<pre lang="text">MultipleOfFive(x) = true if x is divisible by 5
-MultipleOfFive(x) = false if x is not divisible by 5</pre>
+```
+MultipleOfFive(x) = true if x is divisible by 5
+MultipleOfFive(x) = false if x is not divisible by 5
+```
 
 Thus, the representation of `E` in C# can be defined as follows:
 
-<pre lang="cs">Predicate<int> multipleOfFive = i => i % 5 == 0;</pre>
+```csharp
+Predicate<int> multipleOfFive = i => i % 5 == 0;
+```
 
 Thus, running the code below:
 
-<pre lang="cs">Console.WriteLine("Is {0} a multiple of 5? {1}", 15, multipleOfFive(15));
-Console.WriteLine("Is {0} a multiple of 5? {1}", 998, multipleOfFive(998));</pre>
+```csharp
+Console.WriteLine("Is {0} a multiple of 5? {1}", 15, multipleOfFive(15));
+Console.WriteLine("Is {0} a multiple of 5? {1}", 998, multipleOfFive(998));
+```
 
 gives the following results:
 
@@ -227,9 +279,11 @@ gives the following results:
 
 A long time ago, when I was playing with [Project Euler](http://projecteuler.net/) problems, I had to resolve the following one:
 
-<pre lang="text">By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, 
+```
+By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, 
 we can see that the 6th prime is 13.
-What is the 10 001st prime number?</pre>
+What is the 10 001st prime number?
+```
 
 To resolve this problem, I first had to write a fast algorithm that checks whether a given number is prime or not. Once the algorithm was written, I wrote an iterative algorithm that iterates through primes until the 10 001st prime number was found. Nevertheless, is the next iterative algorithm really necessary? You will see.
 
@@ -237,16 +291,21 @@ The algorithm that checks whether a given number is prime or not is the _Charact
 
 Let `E` be the set of primes and `Prime` its _Characteristic function_. In mathematics, a prime is a natural number greater than 1 that has no positive divisors other than 1 and itself. Therefore, `Prime` can be defined as follows:
 
-<pre lang="text">Prime(x) = true if x is prime
-Prime(x) = false if x is not prime</pre>
+```
+Prime(x) = true if x is prime
+Prime(x) = false if x is not prime
+```
 
 Thus, the representation of `E` in C# can be defined as follows:
 
-<pre lang="cs">Predicate<int> prime = IsPrime;</pre>
+```csharp
+Predicate<int> prime = IsPrime;
+```
 
 where `IsPrime` is a method that checks whether a given number is prime or not.
 
-<pre lang="cs">static bool IsPrime(int i)
+```csharp
+static bool IsPrime(int i)
 {
     if (i == 1) return false;            // 1 is not prime
     if (i < 4) return true;              // 2 and 3 are primes
@@ -265,16 +324,20 @@ where `IsPrime` is a method that checks whether a given number is prime or not.
 
     // Otherwise i is prime
     return true;
-}</pre>
+}
+```
 
 Thus, running the code below to resolve our problem:
 
-<pre lang="cs">int p = Primes(prime).Skip(10000).First();
-Console.WriteLine("The 10 001st prime number is {0}", p);</pre>
+```csharp
+int p = Primes(prime).Skip(10000).First();
+Console.WriteLine("The 10 001st prime number is {0}", p);
+```
 
 where `Primes` is defined below:
 
-<pre lang="cs">static IEnumerable <int> Primes(Predicate<int> prime)
+```csharp
+static IEnumerable <int> Primes(Predicate<int> prime)
 {
     yield return 2;
 
@@ -284,7 +347,8 @@ where `Primes` is defined below:
         if (prime(p)) yield return p;
         p += 2;
     }
-}</pre>
+}
+```
 
 gives the following results:
 
@@ -304,12 +368,16 @@ Let `E` and `F` be two sets. The _union_ of `E` and `F`, denoted by `E U F` is t
 
 Let `Union` be the _union_ operation. Thus, the `Union` operation can be implemented as follows in C#:
 
-<pre lang="cs">public static Predicate<T> Union<T>(this Predicate<T> e, Predicate<T> f)
-  => x => e(x) || f(x);</pre>
+```csharp
+public static Predicate<T> Union<T>(this Predicate<T> e, Predicate<T> f)
+  => x => e(x) || f(x);
+```
 
 As you can see, `Union` is an extension function on the _Characteristic function_ of a set. All the operations will be defined as extension functions on the _Characteristic function_ of a set. Thereby, running the code below:
 
-<pre lang="cs">Console.WriteLine("Is 7 in the union of Even and Odd Integers Set? {0}", Even.Union(Odd)(7));</pre>
+```csharp
+Console.WriteLine("Is 7 in the union of Even and Odd Integers Set? {0}", Even.Union(Odd)(7));
+```
 
 gives the following results:
 
@@ -323,14 +391,18 @@ Let `E` and `F` be two sets. The _intersection_ of `E` and `F`, denoted by `E n 
 
 Let `Intersection` be the _intersection_ operation. Thus, the `Intersection` operation can be implemented as follows in C#:
 
-<pre lang="cs">public static Predicate<T> Intersection<T>(this Predicate<T> e, Predicate<T> f)
-  => x => e(x) && f(x);</pre>
+```csharp
+public static Predicate<T> Intersection<T>(this Predicate<T> e, Predicate<T> f)
+  => x => e(x) && f(x);
+```
 
 As you can see, `Intersection` is an extension function on the _Characteristic function_ of a set. Thereby, running the code below:
 
-<pre lang="cs">Predicate<int> multiplesOfThreeAndFive = multipleOfThree.Intersection(multipleOfFive);
+```csharp
+Predicate<int> multiplesOfThreeAndFive = multipleOfThree.Intersection(multipleOfFive);
 Console.WriteLine("Is 15 a multiple of 3 and 5? {0}", multiplesOfThreeAndFive(15));
-Console.WriteLine("Is 10 a multiple of 3 and 5? {0}", multiplesOfThreeAndFive(10));</pre>
+Console.WriteLine("Is 10 a multiple of 3 and 5? {0}", multiplesOfThreeAndFive(10));
+```
 
 gives the following results:
 
@@ -344,15 +416,19 @@ Let `E` and `F` be two sets. The _cartesian product_ of `E` and `F`, denoted by 
 
 Let `CartesianProduct` be the _cartesian product_ operation. Thus, the `CartesianProduct` operation can be implemented as follows in C#:
 
-<pre lang="cs">public static Func<T1, T2, bool> 
+```csharp
+public static Func<T1, T2, bool> 
        CartesianProduct<T1, T2>(this Predicate<T1> e, Predicate<T2> f) => (x, y)
-  => e(x) && f(y);</pre>
+  => e(x) && f(y);
+```
 
 As you can see, `CartesianProduct` is an extension function on the _Characteristic function_ of a set. Thereby, running the code below:
 
-<pre lang="cs">Func<int, int, bool> cartesianProduct = multipleOfThree.CartesianProduct(multipleOfFive);
+```csharp
+Func<int, int, bool> cartesianProduct = multipleOfThree.CartesianProduct(multipleOfFive);
 Console.WriteLine("Is (9, 15) in MultipleOfThree x MultipleOfFive? {0}", 
-                                 cartesianProduct(9, 15));</pre>
+                                 cartesianProduct(9, 15));
+```
 
 gives the following results:
 
@@ -366,15 +442,19 @@ Let `E` and `F` be two sets. The _relative complement_ of `F` in `E`, denoted by
 
 Let `Complement` be the _relative complement_ operation. Thus, the `Complement` operation can be implemented as follows in C#:
 
-<pre lang="cs">public static Predicate<T> Complement<T>(this Predicate<T> e, Predicate<T> f)
-  => x => e(x) && !f(x);</pre>
+```csharp
+public static Predicate<T> Complement<T>(this Predicate<T> e, Predicate<T> f)
+  => x => e(x) && !f(x);
+```
 
 As you can see, `Complement` is an extension method on the _Characteristic function_ of a set. Thereby, running the code below:
 
-<pre lang="cs">Console.WriteLine("Is 15 in MultipleOfThree \\ MultipleOfFive set? {0}", 
+```csharp
+Console.WriteLine("Is 15 in MultipleOfThree \\ MultipleOfFive set? {0}", 
           multipleOfThree.Complement(multipleOfFive)(15));
 Console.WriteLine("Is 9 in MultipleOfThree \\ MultipleOfFive set? {0}", 
-          multipleOfThree.Complement(multipleOfFive)(9));</pre>
+          multipleOfThree.Complement(multipleOfFive)(9));
+```
 
 gives the following results:
 
@@ -388,19 +468,24 @@ Let `E` and `F` be two sets. The _symmetric difference_ of `E` and `F`, denoted 
 
 Let `SymmetricDifference` be the _symmetric difference_ operation. Thus, the `SymmetricDifference` operation can be implemented in two ways in C#. A trivial way is to use the union and complement operations as follows:
 
-<pre lang="cs">public static Predicate<T> SymmetricDifferenceWithoutXor<T>
+```csharp
+public static Predicate<T> SymmetricDifferenceWithoutXor<T>
               (this Predicate<T> e, Predicate<T> f)
-  => Union(e.Complement(f), f.Complement(e));</pre>
+  => Union(e.Complement(f), f.Complement(e));
+```
 
 Another way is to use the `XOR` binary operation as follows:
 
-<pre lang="cs">public static Predicate<T> SymmetricDifferenceWithXor<T>
+```csharp
+public static Predicate<T> SymmetricDifferenceWithXor<T>
               (this Predicate<T> e, Predicate<T> f)
-  => x => e(x) ^ f(x);</pre>
+  => x => e(x) ^ f(x);
+```
 
 As you can see, `SymmetricDifferenceWithoutXor` and `SymmetricDifferenceWithXor` are extension methods on the _Characteristic function_ of a set. Thereby, running the code below:
 
-<pre lang="cs">// SymmetricDifference without XOR
+```csharp
+// SymmetricDifference without XOR
 Console.WriteLine("\nSymmetricDifference without XOR:");
 Predicate<int> sdWithoutXor = prime.SymmetricDifferenceWithoutXor(even);
 Console.WriteLine("Is 2 in the symmetric difference of prime and even Sets? {0}", 
@@ -418,7 +503,8 @@ Console.WriteLine("Is 2 in the symetric difference of prime and even Sets? {0}",
 Console.WriteLine("Is 4 in the symmetric difference of prime and even Sets? {0}", 
                    sdWithXor(4));
 Console.WriteLine("Is 7 in the symmetric difference of prime and even Sets? {0}", 
-                   sdWithXor(7));</pre>
+                   sdWithXor(7));
+```
 
 gives the following results:
 
@@ -434,12 +520,16 @@ Let `Contains` be the operation that checks whether or not an element is in a se
 
 Thus, this operation is defined as follows in C#:
 
-<pre lang="cs">public static bool Contains<T>(this Predicate<T> e, T x) => e(x);</pre>
+```csharp
+public static bool Contains<T>(this Predicate<T> e, T x) => e(x);
+```
 
 Therefore, running the code below:
 
-<pre lang="cs">Console.WriteLine("Is 7 in the singleton {{0}}? {0}", Singleton(0).Contains(7));
-Console.WriteLine("Is 7 in the singleton {{7}}? {0}", Singleton(7).Contains(7));</pre>
+```csharp
+Console.WriteLine("Is 7 in the singleton {{0}}? {0}", Singleton(0).Contains(7));
+Console.WriteLine("Is 7 in the singleton {{7}}? {0}", Singleton(7).Contains(7));
+```
 
 gives the following result:
 
@@ -451,14 +541,18 @@ Let `Add` be the operation that adds an element to a set. This operation is an e
 
 Thus, this operation is defined as follows in C#:
 
-<pre lang="cs">public static Predicate<T> Add<T>(this Predicate<T> s, T e) where T : notnull
-  => x => x.Equals(e) || s(x);</pre>
+```csharp
+public static Predicate<T> Add<T>(this Predicate<T> s, T e) where T : notnull
+  => x => x.Equals(e) || s(x);
+```
 
 Therefore, running the code below:
 
-<pre lang="cs">Console.WriteLine("Is 7 in {{0, 7}}? {0}", Singleton(0).Add(7)(7));
+```csharp
+Console.WriteLine("Is 7 in {{0, 7}}? {0}", Singleton(0).Add(7)(7));
 Console.WriteLine("Is 0 in {{1, 0}}? {0}", Singleton(1).Add(0)(0));
-Console.WriteLine("Is 7 in {{19, 0}}? {0}", Singleton(19).Add(0)(7));</pre>
+Console.WriteLine("Is 7 in {{19, 0}}? {0}", Singleton(19).Add(0)(7));
+```
 
 gives the following result:
 
@@ -470,13 +564,17 @@ Let `Remove` be the operation that removes an element from a set. This operation
 
 Thus, this operation is defined as follows in C#:
 
-<pre lang="cs">public static Predicate<T> Remove<T>(this Predicate<T> s, T e) where T : notnull
-  => x => !x.Equals(e) && s(x);</pre>
+```csharp
+public static Predicate<T> Remove<T>(this Predicate<T> s, T e) where T : notnull
+  => x => !x.Equals(e) && s(x);
+```
 
 Therefore, running the code below:
 
-<pre lang="cs">Console.WriteLine("Is 7 in {{}}? {0}", Singleton(0).Remove(0)(7));
-Console.WriteLine("Is 0 in {{}}? {0}", Singleton(7).Remove(7)(0));</pre>
+```csharp
+Console.WriteLine("Is 7 in {{}}? {0}", Singleton(0).Remove(0)(7));
+Console.WriteLine("Is 0 in {{}}? {0}", Singleton(7).Remove(7)(0));
+```
 
 gives the following result:
 
@@ -508,8 +606,10 @@ In this section, we will set up the _Characterstic function_ of the _Closed_ dis
 
 To set up the _Characterstic function_, we need first a function that calculates the _Euclidean Distance_ between two points in the plane. This function is implemented as follows:
 
-<pre lang="cs">private static double EuclidianDistance(Point point1, Point point2)
-  => Math.Sqrt(Math.Pow(point1.X - point2.X, 2) + Math.Pow(point1.Y - point2.Y, 2));</pre>
+```csharp
+private static double EuclidianDistance(Point point1, Point point2)
+  => Math.Sqrt(Math.Pow(point1.X - point2.X, 2) + Math.Pow(point1.Y - point2.Y, 2));
+```
 
 where `Point` is a `struct` defined in the `System.Windows` namespace. This formula is based on Pythagoras' Theorem.
 
@@ -525,8 +625,10 @@ where `a` and `b` are the coordinates of the center and `R` the radius.
 
 Thus, the implementation of `Disk` in C# is as follows:
 
-<pre lang="cs">public static Predicate<Point> Disk(Point center, double radius)
-  => p => EuclidianDistance(center, p) <= radius;</pre>
+```csharp
+public static Predicate<Point> Disk(Point center, double radius)
+  => p => EuclidianDistance(center, p) <= radius;
+```
 
 In order to view the set in a result, I decided to implement a function `Draw` that draws a set in the _Euclidean plane_. I chose _WPF_ and thus used the `System.Windows.Controls.Image` as a canvas and a `Bitmap` as the context.
 
@@ -536,7 +638,8 @@ Thus, I've built the _Euclidean plane_ illustrated below through the method `Dra
 
 Below the implementation of the method.
 
-<pre lang="cs">public static void Draw(this Predicate<Point> set, Image plane)
+```csharp
+public static void Draw(this Predicate<Point> set, Image plane)
 {
     var bitmap = new Bitmap((int)plane.Width, (int)plane.Height);
 
@@ -571,13 +674,16 @@ Below the implementation of the method.
         IntPtr.Zero,
         Int32Rect.Empty,
         BitmapSizeOptions.FromWidthAndHeight(bitmap.Width, bitmap.Height));
-}</pre>
+}
+```
 
 In the `Draw` method, a `bitmap` having the same width and same height as the _Euclidean plane_ container is created. Then each point in pixels `(x,y)` of the `bitmap` is replaced by a black point if it belongs to the `set`. `xMin`, `xMax`, `yMin` and `yMax` are the bounding values illustrated in the figure of the _Euclidean plane_ above.
 
 As you can see, `Draw` is an extension function on the _Characteristic function_ of a set of points. Therefore, running the code below:
 
-<pre lang="cs">Plane.Disk(new Point(0, 0), 20).Draw(PlaneCanvas);</pre>
+```csharp
+Plane.Disk(new Point(0, 0), 20).Draw(PlaneCanvas);
+```
 
 gives the following result:
 
@@ -593,12 +699,16 @@ In this section, we will set up the _Characteristic functions_ of the _horizonta
 
 Let `HorizontalHalfPlane` be the _Characteristic function_ of a _horizontal_ half-plane. The implementation of `HorizontalHalfPlane` in C# is as follows:
 
-<pre lang="cs">public static Predicate<Point> HorizontalHalfPlane(double y, bool lowerThan)
-  => p => lowerThan ? p.Y <= y : p.Y >= y;</pre>
+```csharp
+public static Predicate<Point> HorizontalHalfPlane(double y, bool lowerThan)
+  => p => lowerThan ? p.Y <= y : p.Y >= y;
+```
 
 Thus, running the code below:
 
-<pre lang="cs">Plane.HorizontalHalfPlane(0, true).Draw(PlaneCanvas);</pre>
+```csharp
+Plane.HorizontalHalfPlane(0, true).Draw(PlaneCanvas);
+```
 
 gives the following result:
 
@@ -606,12 +716,16 @@ gives the following result:
 
 Let `VerticalHalfPlane` be the _Characteristic function_ of a _vertical_ half-plane. The implementation of `VerticalHalfPlane` in C# is as follows:
 
-<pre lang="cs">public static Predicate<Point> VerticalHalfPlane(double x, bool lowerThan)
-  => p => lowerThan ? p.X <= x : p.X >= x;</pre>
+```csharp
+public static Predicate<Point> VerticalHalfPlane(double x, bool lowerThan)
+  => p => lowerThan ? p.X <= x : p.X >= x;
+```
 
 Thus, running the code below:
 
-<pre lang="cs">Plane.VerticalHalfPlane(0, false).Draw(PlaneCanvas);</pre>
+```csharp
+Plane.VerticalHalfPlane(0, false).Draw(PlaneCanvas);
+```
 
 gives the following result:
 
@@ -621,7 +735,9 @@ In the first section of the article, we set up basic binary operations on sets. 
 
 Therefore, running the sample below:
 
-<pre lang="cs">Plane.VerticalHalfPlane(0, false).Intersection(Plane.Disk(new Point(0, 0), 20)).Draw(PlaneCanvas);</pre>
+```csharp
+Plane.VerticalHalfPlane(0, false).Intersection(Plane.Disk(new Point(0, 0), 20)).Draw(PlaneCanvas);
+```
 
 gives the following result:
 
@@ -637,26 +753,33 @@ This section presents functions on the sets in the Euclidean plane.
 
 Let `Translate` be the function that translates a point in the plane. In Euclidean geometry, `Translate` is a function that moves a given point a constant distance in a specified direction. Thus the implementation in C# is as follows:
 
-<pre lang="cs">private static Func<Point, Point> Translate(double deltax, double deltay)
-  => p => new Point(p.X + deltax, p.Y + deltay);</pre>
+```csharp
+private static Func<Point, Point> Translate(double deltax, double deltay)
+  => p => new Point(p.X + deltax, p.Y + deltay);
+```
 
 where `(deltax, deltay)` is the constant vector of the translation.
 
 Let `TranslateSet` be the function that translates a set in the plane. This function is simply implemented as follows in C#:
 
-<pre lang="cs">public static Predicate<Point> TranslateSet
+```csharp
+public static Predicate<Point> TranslateSet
        (this Predicate<Point> set, double deltax, double deltay)
-  => x => set(Translate(-deltax, -deltay)(x));</pre>
+  => x => set(Translate(-deltax, -deltay)(x));
+```
 
 `TranslateSet` is an extension function on a set. It takes as parameters `deltax` which is the delta distance in the first Euclidean dimension and `deltay` which is the delta distance in the second Euclidean dimension. If a point _P (x, y)_ is translated in a set _S_, then its coordinates will change to _(x', y') = (x + delatx, y + deltay)_. Thus, the point _(x' - delatx, y' - deltay)_ will always belong to the set _S_. In set algebra, `TranslateSet` is called isomorph, in other words, the set of all translations forms the _translation group T_, which is isomorphic to the space itself. This explains the main logic of the function.
 
 Thus, running the code below in our WPF application:
 
-<pre lang="cs">TranslateDiskAnimation();</pre>
+```csharp
+TranslateDiskAnimation();
+```
 
 where `TranslateDiskAnimation` is described below:
 
-<pre lang="cs">private const double Delta = 50;
+```csharp
+private const double Delta = 50;
 private double _diskDeltay;
 private readonly Predicate<Point> _disk = Plane.Disk(new Point(0, -170), 80);
 
@@ -674,7 +797,8 @@ private void TranslateTimer_Tick(object? sender, EventArgs e)
     Predicate<Point> translatedDisk = _diskDeltay <= plan.Height ? 
                                       _disk.TranslateSet(0, _diskDeltay) : _disk;
     translatedDisk.Draw(PlaneCanvas);
-}</pre>
+}
+```
 
 gives the following result:
 
@@ -690,28 +814,35 @@ Let `Scale` be the function that sends any point _M_ to another point _N_ such t
 
 Thus the implementation in C# is as follows:
 
-<pre lang="cs">private static Func<Point, Point> Scale
+```csharp
+private static Func<Point, Point> Scale
     (double deltax, double deltay, double lambdax, double lambday)
-  => p => new Point(lambdax * p.X + deltax, lambday * p.Y + deltay);</pre>
+  => p => new Point(lambdax * p.X + deltax, lambday * p.Y + deltay);
+```
 
 where `(deltax, deltay)` is the constant vector of the translation and `(lambdax, lambday)` is the **λ** vector.
 
 Let `ScaleSet` be the function that applies an homothety on a set in the plan. This function is simply implemented as follows in C#:
 
-<pre lang="cs">public static Predicate<Point> ScaleSet
+```csharp
+public static Predicate<Point> ScaleSet
     (this Predicate<Point> set, double deltax, double deltay, double lambdax,
     double lambday) =>
-    x => set(Scale(-deltax / lambdax, -deltay / lambday, 1 / lambdax, 1 / lambday)(x));</pre>
+    x => set(Scale(-deltax / lambdax, -deltay / lambday, 1 / lambdax, 1 / lambday)(x));
+```
 
 `ScaleSet` is an extension function on a set. It takes as parameters `deltax` which is the delta distance in the first Euclidean dimension, `deltay` which is the delta distance in the second Euclidean dimension and `(lambdax, lambday)` which is the constant factor vector **λ**. If a point _P (x, y)_ is transformed through `ScaleSet` in a set _S_, then its coordinates will change to _(x', y') = (lambdax * x + delatx, lambday * y + deltay)_. Thus, the point _((x'- delatx)/lambdax, (y' - deltay)/lambday)_ will always belong to the set _S_, If **λ** is different from the vector 0, of course. In algebra of sets, `ScaleSet` is called isomorph, in other words the set of all homotheties forms the _Homothety group H_, which is isomorphic to the space itself \ {0}. This explains the main logic of the function.
 
 Thus, running the code below in our WPF application:
 
-<pre lang="cs">ScaleDiskAnimation();</pre>
+```csharp
+ScaleDiskAnimation();
+```
 
 where `ScaleDiskAnimation` is described below:
 
-<pre lang="cs">private const double Delta = 50;
+```csharp
+private const double Delta = 50;
 private double _lambdaFactor = 1;
 private double _diskScaleDeltay;
 private readonly Predicate<Point> _disk2 = Plane.Disk(new Point(0, -230), 20);
@@ -734,7 +865,8 @@ private void ScaleTimer_Tick(object? sender, EventArgs e)
                                           _lambdaFactor, 1)
                                         : _disk2;
     scaledDisk.Draw(PlaneCanvas);
-}</pre>
+}
+```
 
 gives the following result:
 
@@ -762,24 +894,31 @@ Below the demonstration:
 
 Thus the implementation in C# is as follows:
 
-<pre lang="cs">private static Func<Point, Point> Rotate(double theta)
+```csharp
+private static Func<Point, Point> Rotate(double theta)
   => p => new Point(p.X * Math.Cos(theta) - p.Y * Math.Sin(theta),
-                    p.X * Math.Sin(theta) + p.Y * Math.Cos(theta));</pre>
+                    p.X * Math.Sin(theta) + p.Y * Math.Cos(theta));
+```
 
 Let `RotateSet` be the function that applies a rotation on a set in the plane with the angle **θ**. This function is simply implemented as follow in C#.
 
-<pre lang="cs">public static Predicate<Point> RotateSet(this Predicate<Point> set, double theta)
-  => p => set(Rotate(-theta)(p));</pre>
+```csharp
+public static Predicate<Point> RotateSet(this Predicate<Point> set, double theta)
+  => p => set(Rotate(-theta)(p));
+```
 
 `RotateSet` is an extension function on a set. It takes as parameter `theta` which is the angle of the rotation. If a point _P (x, y)_ is transformed through `RotateSet` in a set _S_, then its coordinates will change to _(x', y') = (x * cos(_θ_) - y * sin(_θ_), x * cos(_θ_) + y * sin(_θ_))_. Thus, the point _(x' * cos(_θ_) + y' * sin(_θ_), x' * cos(_θ_) - y' * sin(_θ_))_ will always belong to the set _S_. In algebra of sets, `RotateSet` is called isomorph, in other words, the set of all rotations forms the _Rotation group R_, which is isomorphic to the space itself. This explains the main logic of the function.
 
 Thus, running the code below in our WPF application:
 
-<pre lang="cs">RotateHalfPlaneAnimation();</pre>
+```csharp
+RotateHalfPlaneAnimation();
+```
 
 where `RotateHalfPlaneAnimation` is described below:
 
-<pre lang="cs">private double _theta;
+```csharp
+private double _theta;
 private const double TWO_PI = 2 * Math.PI;
 private const double HALF_PI = Math.PI / 2;
 private readonly Predicate<Point> _halfPlane = Plane.VerticalHalfPlane(220, false);
@@ -797,7 +936,8 @@ private void RotateTimer_Tick(object? sender, EventArgs e)
     _halfPlane.RotateSet(_theta).Draw(PlaneCanvas);
     _theta += HALF_PI;
     _theta %= TWO_PI;
-}</pre>
+}
+```
 
 gives the following result:
 
@@ -824,7 +964,9 @@ Very simple, isn't it? For those who want to go further, you can explore these:
 
 Fractals are sets that have a fractal dimension that usually exceeds their topological dimension and may fall between the integers. For example, the _Mandelbrot_ set is a fractal defined by a family of complex quadratic polynomials:
 
-<pre lang="text">Pc(z) = z^2 + c</pre>
+```
+Pc(z) = z^2 + c
+```
 
 where `c` is a complex. The _Mandelbrot_ fractal is defined as the set of all points `c` such that the above sequence does not escape to infinity. In algebra of sets, this is formulated as follows:
 
@@ -834,7 +976,9 @@ A Mandelbrot set is illustrated above.
 
 Fractals (abstract data type) can always be represented as follows in C#:
 
-<pre lang="cs">Func<Complex, Complex> fractal;</pre>
+```csharp
+Func<Complex, Complex> fractal;
+```
 
 ### <a id="complex-draw" name="complex-draw">Complex Numbers and Drawing</a>
 
@@ -844,11 +988,14 @@ In order to be able to draw fractals, I needed to manipulate _Complex_ numbers. 
 
 I've created a _Mandelbrot_ (abstract data type representation) `P(z) = z^2 + c` that is available below.
 
-<pre lang="cs">public static Func<Complex, Complex, Complex> MandelbrotFractal() => (c, z) => z * z + c;</pre>
+```csharp
+public static Func<Complex, Complex, Complex> MandelbrotFractal() => (c, z) => z * z + c;
+```
 
 In order to be able to draw _Complex_ numbers, I needed to update the `Draw` function. Thus, I created an overload of the `Draw` function that uses `ColorMap` and `ClorTriplet` classes. Below is the implementation in C#.
 
-<pre lang="cs">public static void Draw(this Func<Complex, Complex> fractal, Image plane)
+```csharp
+public static void Draw(this Func<Complex, Complex> fractal, Image plane)
 {
     var bitmap = new Bitmap((int)plane.Width, (int)plane.Height);
 
@@ -891,11 +1038,14 @@ In order to be able to draw _Complex_ numbers, I needed to update the `Draw` fun
         IntPtr.Zero,
         Int32Rect.Empty,
         BitmapSizeOptions.FromWidthAndHeight(bitmap.Width, bitmap.Height));
-}</pre>
+}
+```
 
 Thus, running the code below:
 
-<pre lang="cs">Plane.MandelbrotFractal().Draw(PlaneCanvas, 20, 1.5);</pre>
+```csharp
+Plane.MandelbrotFractal().Draw(PlaneCanvas, 20, 1.5);
+```
 
 gives the following result:
 
@@ -905,11 +1055,15 @@ gives the following result:
 
 I've also created a _Newton Fractal_ (abstract data type representation) `P(z) = z^3 - 2*z + 2` that is available below:
 
-<pre lang="cs">public static Func<Complex, Complex> NewtonFractal() => z => z * z * z - 2 * z + 2;</pre>
+```csharp
+public static Func<Complex, Complex> NewtonFractal() => z => z * z * z - 2 * z + 2;
+```
 
 Thus, running the code below:
 
-<pre lang="cs">Plane.NewtonFractal().Draw(PlaneCanvas);</pre>
+```csharp
+Plane.NewtonFractal().Draw(PlaneCanvas);
+```
 
 gives the following result:
 
@@ -936,7 +1090,8 @@ _Lazy evaluation_ is an evaluation strategy which delays the evaluation of an ex
 
 Let's have a look at the code below:
 
-<pre lang="cs">public class MyLazy<T>
+```csharp
+public class MyLazy<T>
 {
     #region Fields
 
@@ -973,7 +1128,8 @@ Let's have a look at the code below:
     }
 
     #endregion
-}</pre>
+}
+```
 
 `MyLazy<T>` is a generic class that contains the following fields:
 
@@ -985,13 +1141,17 @@ In order to use objects of type `MyLazy<T>` as objects of type `T`, the `implici
 
 Thus, running the code below:
 
-<pre lang="cs">var myLazyRandom = new MyLazy<double>(GetRandomNumber);
+```csharp
+var myLazyRandom = new MyLazy<double>(GetRandomNumber);
 double myRandomX = myLazyRandom;
-Console.WriteLine("\n Random with MyLazy<double>: {0}", myRandomX);</pre>
+Console.WriteLine("\n Random with MyLazy<double>: {0}", myRandomX);
+```
 
 where `GetRandomNumber` returns a random `double` as follows:
 
-<pre lang="cs">static double GetRandomNumber() => new Random().NextDouble();</pre>
+```csharp
+static double GetRandomNumber() => new Random().NextDouble();
+```
 
 gives the following output:
 
@@ -999,16 +1159,20 @@ gives the following output:
 
 The .NET Framework 4 introduced a class `System.Lazy<T>` for lazy evaluation. This class returns the value through the property `Value`. Running the code below:
 
-<pre lang="cs">var lazyRandom = new Lazy<double>(GetRandomNumber);
-double randomX = lazyRandom;</pre>
+```csharp
+var lazyRandom = new Lazy<double>(GetRandomNumber);
+double randomX = lazyRandom;
+```
 
 gives a compilation error because the type `Lazy<T>` is different from the type `double`.
 
 To work with the value of the class `System.Lazy<T>`, the property `Value` has to be used as follows:
 
-<pre lang="cs">var lazyRandom = new Lazy<double>(GetRandomNumber);
+```csharp
+var lazyRandom = new Lazy<double>(GetRandomNumber);
 double randomX = lazyRandom.Value;
-Console.WriteLine("\n Random with System.Lazy<double>.Value: {0}", randomX);</pre>
+Console.WriteLine("\n Random with System.Lazy<double>.Value: {0}", randomX);
+```
 
 which gives the following output:
 
