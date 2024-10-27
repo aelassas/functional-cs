@@ -43,8 +43,8 @@ public static class ColorMap
         double q = 1.0 - p;
         // only let p and q go to zero very close to zero; otherwise they should stay nearly 1
         // this keep the countour lines from getting thick
-        double p1 = 1 - q * q * q;
-        double q1 = 1 - p * p * p;
+        double p1 = 1 - (q * q * q);
+        double q1 = 1 - (p * p * p);
         // fix s and v from p1 and q1
         double s = 0.4 + 0.6 * p1;
         double v = 0.6 + 0.4 * q1;
