@@ -70,10 +70,10 @@ public static class ColorMap
             if (Math.Abs(h - 1.0) < double.Epsilon) h = 0.0;
             double z = Math.Truncate(6 * h);
             var i = (int)z;
-            double f = h * 6 - z;
+            double f = (h * 6) - z;
             double p = v * (1 - s);
-            double q = v * (1 - s * f);
-            double t = v * (1 - s * (1 - f));
+            double q = v * (1 - (s * f));
+            double t = v * (1 - (s * (1 - f)));
 
             switch (i)
             {

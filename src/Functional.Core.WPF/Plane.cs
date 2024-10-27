@@ -35,7 +35,7 @@ public static class Plane
 
     #region Scale
 
-    private static Func<Point, Point> Scale(double deltax, double deltay, double lambdax, double lambday) => p => new Point(lambdax * p.X + deltax, lambday * p.Y + deltay);
+    private static Func<Point, Point> Scale(double deltax, double deltay, double lambdax, double lambday) => p => new Point((lambdax * p.X) + deltax, (lambday * p.Y) + deltay);
 
     public static Predicate<Point> ScaleSet(this Predicate<Point> set, double deltax, double deltay, double lambdax,
         double lambday) =>
@@ -46,7 +46,7 @@ public static class Plane
     #region Rotate
 
     // rotate
-    private static Func<Point, Point> Rotate(double theta) => p => new Point(p.X * Math.Cos(theta) - p.Y * Math.Sin(theta), p.X * Math.Sin(theta) + p.Y * Math.Cos(theta));
+    private static Func<Point, Point> Rotate(double theta) => p => new Point((p.X * Math.Cos(theta)) -( p.Y * Math.Sin(theta)), (p.X * Math.Sin(theta)) + (p.Y * Math.Cos(theta)));
 
     public static Predicate<Point> RotateSet(this Predicate<Point> set, double theta) => p => set(Rotate(-theta)(p));
 
