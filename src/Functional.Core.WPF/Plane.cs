@@ -55,10 +55,10 @@ public static class Plane
     #region Fractals
 
     // Newton Fractal P(z) = z^3 - 2*z + 2
-    public static Func<Complex, Complex> NewtonFractal() => z => z * z * z - 2 * z + 2;
+    public static Func<Complex, Complex> NewtonFractal() => z => (z * z * z) - (2 * z) + 2;
 
     // Mandelbrot Fractal Pc(z) = z^2 + c
-    public static Func<Complex, Complex, Complex> MandelbrotFractal() => (c, z) => z * z + c;
+    public static Func<Complex, Complex, Complex> MandelbrotFractal() => (c, z) => (z * z) + c;
 
     #endregion
 }
