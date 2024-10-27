@@ -46,10 +46,10 @@ public static class ColorMap
         double p1 = 1 - (q * q * q);
         double q1 = 1 - (p * p * p);
         // fix s and v from p1 and q1
-        double s = 0.4 + 0.6 * p1;
-        double v = 0.6 + 0.4 * q1;
+        double s = 0.4 + (0.6 * p1);
+        double v = 0.6 + (0.4 * q1);
 
-        return (new ColorTriplet { X = h, Y = s, Z = v });
+        return new ColorTriplet { X = h, Y = s, Z = v };
     }
 
     // convert HSV to RGB

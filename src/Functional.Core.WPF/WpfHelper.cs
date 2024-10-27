@@ -30,11 +30,11 @@ public static class WpfHelper
 
         for (int x = 0; x < bitmap.Height; x++)
         {
-            double xp = xMin + x * ((xMax - xMin) / plane.Width);
+            double xp = xMin + (x * ((xMax - xMin) / plane.Width));
 
             for (int y = 0; y < bitmap.Width; y++)
             {
-                double yp = yMax - y * ((yMax - yMin) / plane.Height);
+                double yp = yMax - (y * ((yMax - yMin) / plane.Height));
 
                 if (set(new Point(xp, yp)))
                 {
@@ -61,10 +61,10 @@ public static class WpfHelper
 
         for (int x = 0; x < plane.Width; x++)
         {
-            double re = reMin + x * ((reMax - reMin) / plane.Width);
+            double re = reMin + (x * ((reMax - reMin) / plane.Width));
             for (int y = 0; y < plane.Height; y++)
             {
-                double im = imMax - y * ((imMax - imMin) / plane.Height);
+                double im = imMax - (y * ((imMax - imMin) / plane.Height));
 
                 var z = new Complex(re, im);
                 Complex fz = fractal(z);
@@ -105,10 +105,10 @@ public static class WpfHelper
 
         for (int x = 0; x < plane.Width; x++)
         {
-            double re = reMin + x * ((reMax - reMin) / plane.Width);
+            double re = reMin + (x * ((reMax - reMin) / plane.Width));
             for (int y = 0; y < plane.Height; y++)
             {
-                double im = imMax - y * ((imMax - imMin) / plane.Height);
+                double im = imMax - (y * ((imMax - imMin) / plane.Height));
 
                 var c = new Complex(re, im);
                 Complex z = new Complex(0, 0);
