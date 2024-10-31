@@ -16,12 +16,27 @@ public static class Set
     // Singleton set
     public static Predicate<T> Singleton<T>(T e) where T : notnull => x => e.Equals(x);
 
+    // Even numbers set
+    public static readonly Predicate<int> Even = i => i % 2 == 0;
+
+    // Odd numbers set
+    public static readonly Predicate<int> Odd = i => i % 2 == 1;
+
+    // Multiples of 3 set
+    public static readonly Predicate<int> MultipleOfThree = i => i % 3 == 0;
+
+    // Multiples of 5 sets
+    public static readonly Predicate<int> MultipleOfFive = i => i % 5 == 0;
+
+    // Primes set
+    public static readonly Predicate<int> Prime = IsPrime;
+
     #endregion
 
     #region Primes
 
     // Primes
-    internal static IEnumerable<int> Primes(Predicate<int> prime)
+    public static IEnumerable<int> Primes(Predicate<int> prime)
     {
         yield return 2;
 
