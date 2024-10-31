@@ -5,22 +5,23 @@
 ## Contents
 
 1.  [Introduction](#intro)
-2.  [Representing Data Through Functions](#rep-data)
+2.  [Development Environment](#dev-env)
+3.  [Representing Data Through Functions](#rep-data)
     1.  [Sets](#sets)
     2.  [Binary Operations](#bin-op)
     3.  [Go Further](#func-go-further)
-3.  [Euclidean Plane](#plane)
+4.  [Euclidean Plane](#plane)
     1.  [Drawing a Disk](#disk)
     2.  [Drawing Horizontal and Vertical Half-planes](#half-plane)
     3.  [Functions](#func)
     4.  [Go Further](#plane-further)
-4.  [Fractals](#fractals)
+5.  [Fractals](#fractals)
     1.  [Complex Numbers and Drawing](#complex-draw)
     2.  [Mandelbrot Fractal](#mandelbrot-fractal)
     3.  [Newton Fractal](#newton-fractal)
     4.  [Go Further](#fractal-further)
-5.  [Introduction to Laziness](#laziness)
-6.  [Running the Source Code](#run-src)
+6.  [Introduction to Laziness](#laziness)
+7.  [Unit Tests](#unit-tests)
 
 ## <a id="intro" name="intro">Introduction</a>
 
@@ -34,6 +35,38 @@ There are two possible properties of functions:
 Functional programming consists in exploiting one and/or the other of these two properties.
 
 This article will not discuss the basics of functional programming, as you can find numerous resources on this topic on the Internet. Instead, it will talk about functional programming in C# applied to algebra, numbers, the Euclidean plane, and fractals. The examples provided in this article will start from simple to more complex but always illustrated in a simple, straightforward and easy-to-understand manner.
+
+## <a id="dev-env" name="dev-env">Development Environment</a>
+
+To run the source code, you will need to install [Visual Studio 2022](https://visualstudio.microsoft.com/). Once Node.js is installed, clone the GitHub repository:
+```
+git clone https://github.com/aelassas/functional-cs.git
+```
+
+Then open `./functional-cs/Functional.sln` with Visual Studio.
+
+Below are the projects available in the solution:
+
+![Image](https://github.com/aelassas/functional-cs/blob/main/img/solution.png?raw=true)
+
+*   `Functional.Core` is a class library that contains sets functions and helpers.
+*   `Functional.Core.WPF` is a WPF class library that contains plane and fractals functions and helpers.
+*   `Functional.EuclideanPlane` is a WPF application that contains Euclidean Plane and Fractals samples.
+*   `Functional.Laziness` is a Console application that contains Laziness samples.
+*   `Functional.Set` is a Console application that contains sets samples.
+*   `Functional.UnitTests` is the unit tests project.
+
+To run numbers demo, run `Functional.Set` project.
+
+To run Euclidean plane and fractals demos, run `Functional.EuclideanPlane` project.
+
+To run laziness demo, run `Functional.Laziness` project.
+
+To run unit tests, run the following command:
+```
+cd functional-cs/tests/Functional.UnitTests
+dotnet test
+```
 
 ## <a id="rep-data" name="rep-data">Representing Data Through Functions</a>
 
@@ -1180,18 +1213,180 @@ which gives the following output:
 
 The .NET Framework 4 also introduced `ThreadLocal` and `LazyInitializer` for Lazy evaluation.
 
-## <a id="run-src" name="run-src">Running the Source Code</a>
+## <a id="unit-tests" name="unit-tests">Unit Tests</a>
 
-To run the source code, you will need Visual Studio 2022 and .NET 8.0 SDK.
+Below are the unit tests for sets of numbers using xUnit.
 
-Below are the projects available in the solution:
+```csharp
+using Functional.Core;
 
-![Image](https://github.com/aelassas/functional-cs/blob/main/img/solution.png?raw=true)
+namespace Functional.UnitTests;
 
-*   `Functional.Core` is a class library that contains sets functions and helpers.
-*   `Functional.Core.WPF` is a WPF class library that contains plane and fractals functions and helpers.
-*   `Functional.EuclideanPlane` is a WPF application that contains Euclidean Plane and Fractals samples.
-*   `Functional.Laziness` is a Console application that contains Laziness samples.
-*   `Functional.Set` is a Console application that contains sets samples.
+public class SetUnitTest
+{
+    [Fact]
+    public void TestEmptySet()
+    {
+        Assert.False(Set.Empty<int>()(7));
+    }
+
+    [Fact]
+    public void TestSetAll()
+    {
+        Assert.True(Set.All<int>()(7));
+    }
+
+    [Fact]
+    public void TestSingleton()
+    {
+        Assert.False(Set.Singleton(0)(7));
+        Assert.True(Set.Singleton(7)(7));
+    }
+
+    [Fact]
+    public void TestEvenNumbers()
+    {
+        Assert.False(Set.Even(99));
+        Assert.True(Set.Even(998));
+    }
+
+    [Fact]
+    public void TestOddNumbers()
+    {
+        Assert.True(Set.Odd(99));
+        Assert.False(Set.Odd(998));
+    }
+
+    [Fact]
+    public void TestMultiplesOfThree()
+    {
+        Assert.True(Set.MultipleOfThree(99));
+        Assert.False(Set.MultipleOfThree(998));
+    }
+
+    [Fact]
+    public void TestMultiplesOfFive()
+    {
+        Assert.True(Set.MultipleOfThree(15));
+        Assert.False(Set.MultipleOfThree(998));
+    }
+
+    [Fact]
+    public void TestPrimes()
+    {
+        Assert.False(Set.Prime(0));
+        Assert.True(Set.Prime(2));
+        Assert.False(Set.Prime(4));
+        Assert.Equal(104743, Set.Primes(Set.Prime).Skip(10000).First());
+    }
+
+    [Fact]
+    public void TestUnion()
+    {
+        Assert.True(Set.Even.Union(Set.Odd)(7));
+    }
+
+    [Fact]
+    public void TestIntersection()
+    {
+        Predicate<int> multiplesOfThreeAndFive = Set.MultipleOfThree.Intersection(Set.MultipleOfFive);
+        Assert.True(multiplesOfThreeAndFive(15));
+        Assert.False(multiplesOfThreeAndFive(10));
+    }
+
+    [Fact]
+    public void TestCartesianProduct()
+    {
+        Func<int, int, bool> cartesianProduct = Set.MultipleOfThree.CartesianProduct(Set.MultipleOfFive);
+        Assert.True(cartesianProduct(9, 15));
+        Assert.False(cartesianProduct(10, 15));
+    }
+
+    [Fact]
+    public void TestComplement()
+    {
+        Assert.False(Set.MultipleOfThree.Complement(Set.MultipleOfFive)(15));
+        Assert.True(Set.MultipleOfThree.Complement(Set.MultipleOfFive)(9));
+    }
+
+    [Fact]
+    public void TestSymmetricDifferenceWithoutXor()
+    {
+        Predicate<int> sdWithoutXor = Set.Prime.SymmetricDifferenceWithoutXor(Set.Even);
+        Assert.False(sdWithoutXor(2));
+        Assert.True(sdWithoutXor(4));
+        Assert.True(sdWithoutXor(7));
+    }
+
+    [Fact]
+    public void TestSymmetricDifferenceWithXor()
+    {
+        Predicate<int> sdWithXor = Set.Prime.SymmetricDifferenceWithXor(Set.Even);
+        Assert.False(sdWithXor(2));
+        Assert.True(sdWithXor(4));
+        Assert.True(sdWithXor(7));
+    }
+
+    [Fact]
+    public void TestContains()
+    {
+        Assert.False(Set.Singleton(0).Contains(7));
+        Assert.True(Set.Singleton(7).Contains(7));
+    }
+
+    [Fact]
+    public void TestAdd()
+    {
+        Assert.True(Set.Singleton(0).Add(7)(7));
+        Assert.True(Set.Singleton(1).Add(0)(0));
+        Assert.False(Set.Singleton(19).Add(0)(7));
+    }
+
+    [Fact]
+    public void TestRemove()
+    {
+        Assert.False(Set.Singleton(0).Remove(0)(7));
+        Assert.False(Set.Singleton(7).Remove(7)(0));
+        Assert.False(Set.All<int>().Remove(0)(0));
+        Assert.True(Set.All<int>().Remove(0)(7));
+    }
+}
+```
+
+Below are unit tests for lazy evaluation.
+
+```csharp
+using Functional.Core;
+
+namespace Functional.UnitTests;
+
+public class LazyUnitTest
+{
+    static double GetRandomNumber() => new Random().NextDouble();
+
+    [Fact]
+    public void TestMyLazy()
+    {
+        var myLazyRandom = new MyLazy<double>(GetRandomNumber);
+        double myRandomX = myLazyRandom; // implicit cast
+        Assert.NotNull(myLazyRandom);
+        Assert.Equal(myRandomX, myLazyRandom);
+    }
+}
+```
+
+After running the unit tests with the following commands:
+```
+cd functional-cs/tests/Functional.UnitTests
+dotnet test --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+```
+
+We reach 100% of code coverage. You can generate the coverage report with the following command after running the unit tests:
+```
+dotnet tool install -g dotnet-reportgenerator-globaltool
+reportgenerator -reports:"./coverage.cobertura.xml" -targetdir:"coveragereport" -reporttypes:Html
+```
+
+The coverage report is written in `./coveragereport` folder.
 
 That's it! I hope you enjoyed reading.
