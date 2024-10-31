@@ -38,7 +38,7 @@ This article will not discuss the basics of functional programming, as you can f
 
 ## <a id="dev-env" name="dev-env">Development Environment</a>
 
-To run the source code, you will need to install [Visual Studio 2022](https://visualstudio.microsoft.com/). Once Node.js is installed, clone the GitHub repository:
+To run the source code, you will need to install [Visual Studio 2022](https://visualstudio.microsoft.com/). Once installed, clone the GitHub repository:
 ```
 git clone https://github.com/aelassas/functional-cs.git
 ```
