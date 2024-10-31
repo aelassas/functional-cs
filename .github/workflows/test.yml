@@ -14,13 +14,11 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
             dotnet-version: 8.x
-      - name: build
-        run: dotnet build
       - name: test
-        run: dotnet test --no-restore --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+        run: dotnet test --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: coverage.cobertura.xml
-          directory: ./tests/Translator.UnitTests
+          directory: ./tests/Functional.UnitTests
