@@ -29,18 +29,18 @@ Functional programming is a programming paradigm based on functions, their compo
 
 There are two possible properties of functions:
 
-1.  **Purity**: Functions have results that depend strictly on their arguments, with no other external effect. Purity leads to compartmentalization, localization, stability, and determinism.
+1.  **Purity**: Functions have results that depend strictly on their arguments, with no other side effect. Purity leads to compartmentalization, localization, stability, and determinism.
 2.  **First-class citizenship**: Functions have value status. Functions can be named, assigned, typed, created on demand, passed as an argument to a function, be the result of a function, and stored in a data structure. First-class citizenship leads to flexibility of use and compositionality.
 
 Functional programming consists in exploiting one and/or the other of these two properties.
 
 C# supports functional programming concepts, though it's primarily an object-oriented language. Here are the main functional programming features supported in C#:
-* First-class functions (lambda expressions, delegates, method references)
-* Immutability (records, immutable collections, readonly members)
-* Pure functions (methods without side effects, deterministic outputs)
-* Higher-order functions (LINQ operations, methods that take functions as parameters)
-* Pattern matching (switch expressions, property patterns, type patterns)
-* Expression trees (represent code as data, used extensively in LINQ providers)
+* **First-class functions**: lambda expressions, delegates, method references
+* **Immutability**: records, immutable collections, readonly members
+* **Pure functions**: methods without side effects, deterministic outputs
+* **Higher-order functions**: LINQ operations, methods that take functions as parameters
+* **Pattern matching**: switch expressions, property patterns, type patterns
+* **Expression trees**: represent code as data, used extensively in LINQ providers
 
 This article will not discuss the basics of functional programming, as you can find numerous resources on this topic. Instead, it will talk about functional programming in C# applied to algebra, numbers, the Euclidean plane, and fractals. The examples provided in this article will start from simple to more complex but always illustrated in a simple, straightforward and easy-to-understand manner.
 
