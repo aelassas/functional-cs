@@ -34,7 +34,15 @@ There are two possible properties of functions:
 
 Functional programming consists in exploiting one and/or the other of these two properties.
 
-This article will not discuss the basics of functional programming, as you can find numerous resources on this topic on the Internet. Instead, it will talk about functional programming in C# applied to algebra, numbers, the Euclidean plane, and fractals. The examples provided in this article will start from simple to more complex but always illustrated in a simple, straightforward and easy-to-understand manner.
+C# supports functional programming concepts, though it's primarily an object-oriented language. Here are the main functional programming features supported in C#:
+* First-class functions (lambda expressions, delegates, method references)
+* Immutability (records, immutable collections, readonly members)
+* Pure functions (methods without side effects, deterministic outputs)
+* Higher-order functions (LINQ operations, methods that take functions as parameters)
+* Pattern matching (switch expressions, property patterns, type patterns)
+* Expression trees (represent code as data, used extensively in LINQ providers)
+
+This article will not discuss the basics of functional programming, as you can find numerous resources on this topic. Instead, it will talk about functional programming in C# applied to algebra, numbers, the Euclidean plane, and fractals. The examples provided in this article will start from simple to more complex but always illustrated in a simple, straightforward and easy-to-understand manner.
 
 ## <a id="dev-env" name="dev-env">Development Environment</a>
 
