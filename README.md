@@ -42,7 +42,7 @@ C# supports functional programming concepts, though it's primarily an object-ori
 * **Pattern matching**: switch expressions, property patterns, type patterns
 * **Expression trees**: represent code as data, used extensively in LINQ providers
 
-This article will not discuss the basics of functional programming, as you can find numerous resources on this topic. Instead, it will talk about functional programming in C# applied to algebra, numbers, the Euclidean plane, and fractals. The examples provided in this article will start from simple to more complex but always illustrated in a simple, straightforward and easy-to-understand manner.
+This article will not discuss the basics of functional programming, as you can find numerous resources on this topic. Instead, it will talk about functional programming in C# applied to algebra, numbers, Euclidean plane, and fractals. The examples provided in this article will start from simple to more complex but always illustrated in a simple, straightforward and easy-to-understand manner.
 
 ## <a id="dev-env" name="dev-env">Development Environment</a>
 
