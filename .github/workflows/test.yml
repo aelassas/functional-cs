@@ -33,7 +33,7 @@ jobs:
         with:
           github-token: ${{ secrets.COVERALLS_REPO_TOKEN }}
           file: ./tests/Functional.UnitTests/coverage.cobertura.xml
-          base-path: ../../src/Functional.Core
+          base-path: src/Functional.Core
           fail-on-error: true
           debug: true
           measure: true          
