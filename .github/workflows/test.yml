@@ -31,9 +31,7 @@ jobs:
       - name: Upload coverage reports to Coveralls
         uses: coverallsapp/github-action@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           file: ./tests/Functional.UnitTests/coverage.cobertura.xml
-          base-path: src/Functional.Core
           fail-on-error: true
           debug: true
           measure: true          
