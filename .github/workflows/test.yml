@@ -34,5 +34,4 @@ jobs:
           file: ./tests/Functional.UnitTests/coverage.cobertura.xml
           base-path: src/Functional.Core
           fail-on-error: true
-          debug: true
           measure: true          
