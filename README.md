@@ -1,4 +1,4 @@
-[![build](https://github.com/aelassas/functional-cs/actions/workflows/build.yml/badge.svg)](https://github.com/aelassas/functional-cs/actions/workflows/build.yml) [![test](https://github.com/aelassas/functional-cs/actions/workflows/test.yml/badge.svg)](https://github.com/aelassas/functional-cs/actions/workflows/test.yml) [![coveralls](https://coveralls.io/repos/github/aelassas/functional-cs/badge.svg?branch=main)](https://coveralls.io/github/aelassas/functional-cs?branch=main)
+[![build](https://github.com/aelassas/functional-cs/actions/workflows/build.yml/badge.svg)](https://github.com/aelassas/functional-cs/actions/workflows/build.yml) [![test](https://github.com/aelassas/functional-cs/actions/workflows/test.yml/badge.svg)](https://github.com/aelassas/functional-cs/actions/workflows/test.yml) [![codecov](https://codecov.io/gh/aelassas/functional-cs/graph/badge.svg?token=0EGYB2IJHJ)](https://codecov.io/gh/aelassas/functional-cs)
 
 <!--
 [![coveralls](https://coveralls.io/repos/github/aelassas/functional-cs/badge.svg?branch=main)](https://coveralls.io/github/aelassas/functional-cs?branch=main)
