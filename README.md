@@ -1403,3 +1403,4 @@ reportgenerator -reports:"./coverage.cobertura.xml" -targetdir:"coveragereport" 
 The coverage report is written in `./coveragereport` folder.
 
 That's it! I hope you enjoyed reading.
+
